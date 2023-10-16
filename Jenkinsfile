@@ -8,6 +8,7 @@ pipeline {
         {
         steps{
                 echo "Deploying..."
+                echo "Version from params: ${params.PASSWORDcd .}"
             }
          }
     }
