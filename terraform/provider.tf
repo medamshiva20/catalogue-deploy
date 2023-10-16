@@ -10,6 +10,7 @@ backend "s3"{
     key = "catalogue-dev"
     region = "us-east-1"
     dynamodb_table = "roboshop-remote-lock"
+    //shared_credentials_file = "~/.aws/credentials"
    }
 }
 

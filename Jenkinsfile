@@ -31,7 +31,7 @@ pipeline {
                 sh '''
 
                 cd terraform
-                terraform plan -auto-approve
+                terraform plan
                 
                 '''
             }
