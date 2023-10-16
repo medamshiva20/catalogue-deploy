@@ -1,0 +1,16 @@
+module "catalogue_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  ami = data.aws_ami.devops_ami.id
+  instance_type = "t2.medium"
+  vpc_security_group_ids = [data.aws_ssm_parameter.catalogue_sg_id.value]
+  #This should be in Roboshop DB Subnet
+  subnet_id = element(split(",",data.aws_ssm_parameter.private_subnet_ids.value), 0)
+  //user_data = file("catalogue.sh")
+  #user_data = file("roboshop-ansible.sh")
+  tags = merge(
+    {
+        Name = "Catalogue-DEV-AMI"
+    },
+    var.common_tags
+  )
+}
